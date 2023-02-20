@@ -6,7 +6,7 @@
 /*   By: albrusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 12:36:04 by albrusso          #+#    #+#             */
-/*   Updated: 2023/02/15 16:25:05 by albrusso         ###   ########.fr       */
+/*   Updated: 2023/02/20 17:05:28 by albrusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,31 @@
 #include "so_long.h"
 #include "../libft/libft.h"
 
-int	main(void)
+int	main(int ac, char *argv[])
 {
 
 	t_program	game;
 	t_image	wall;
+	char	**maps;
 
 	game.mlx = mlx_init();
 	game.win = ft_new_window(game.mlx, 1320, 720, "so_long");
 
+	game.win.size.x = 1320;
+	game.win.size.y = 720;
 	wall = newSprite(game.mlx, "/nfs/homes/albrusso/Desktop/so_long/image/wall.xpm");
 	game.wallpaper = newSprite(game.mlx, "/nfs/homes/albrusso/Desktop/so_long/image/wallpaper.xpm");
 	game.characters = newSprite(game.mlx, "/nfs/homes/albrusso/Desktop/so_long/image/character.xpm");
 	game.sprite_position.x = 60;
 	game.sprite_position.y = 60;
 
-	ft_put_wall(game.mlx, game.win, wall);
-	ft_put_wallpaper(&game, game.wallpaper);
-	mlx_put_image_to_window(game.mlx, game.win.reference, game.characters.reference, 60, 60);
-	mlx_key_hook(game.win.reference, key_hook, &game);
-
+	if (ft_check_map(maps) == 1)
+	{
+		ft_put_wall(game.mlx, game.win, wall);
+		ft_put_wallpaper(&game, game.wallpaper);
+		mlx_put_image_to_window(game.mlx, game.win.reference, game.characters.reference, 60, 60);
+		mlx_key_hook(game.win.reference, key_hook, &game);
+	}
 	mlx_loop(game.mlx);
 
 }

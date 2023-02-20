@@ -6,14 +6,14 @@
 #    By: albrusso <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 16:14:12 by albrusso          #+#    #+#              #
-#    Updated: 2023/02/13 14:36:08 by albrusso         ###   ########.fr        #
+#    Updated: 2023/02/20 15:38:51 by albrusso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	so_long
 CC			=	clang
 SRCS_DIR	=	srcs/
-SRC		=	so_long.c image.c hooks.c function.c
+SRC		=	so_long.c image.c hooks.c function.c get_next_line.c get_next_line_utils.c read_map.c
 
 LIBFT		=	libft/libft.a
 MLXFLAGS	=	-L ./mlx/ -lmlx -framework OpenGL -framework AppKit -lz
@@ -43,7 +43,7 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 			make -C libft	
 			make clean -C libft
-			$(CC) $(SRCS) $(LIBFT) $(MLXFLAGS) -o $(NAME)
+			$(CC) -g $(SRCS) $(LIBFT) $(MLXFLAGS) -o $(NAME)
 			@echo "$(GREEN) so_long compiled!$(DEF_COLOR)"
 
 %o:			%.c

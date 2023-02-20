@@ -6,7 +6,7 @@
 /*   By: albrusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:14:17 by albrusso          #+#    #+#             */
-/*   Updated: 2023/02/15 16:25:07 by albrusso         ###   ########.fr       */
+/*   Updated: 2023/02/20 17:05:28 by albrusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,23 @@ int	key_hook(int keycode, void *g)
 	old.y = game->sprite_position.y;
 	if (keycode == 65307)
 		exit(0);
-	if (keycode == 97)
+	if (keycode == 97 || keycode == 65361)
 	{
 		if (game->sprite_position.x - 60 > 0)
 			game->sprite_position.x -= 60;
 	}
-	else if (keycode == 100)
+	else if (keycode == 100 || keycode == 65363)
 	{
-		if (game->sprite_position.x + 60 < 1080)
+		if (game->sprite_position.x + 60 < (game->win.size.x - 60))
 			game->sprite_position.x += 60;
 
 	}
-	else if (keycode == 115)
+	else if (keycode == 115 || keycode == 65364)
 	{
-		if (game->sprite_position.y + 60 < 720)
+		if (game->sprite_position.y + 60 < (game->win.size.y - 60))
 			game->sprite_position.y += 60;
 	}
-	else if (keycode == 119)
+	else if (keycode == 119 || keycode == 65362)
 	{
 		if (game->sprite_position.y - 60 > 0)
 			game->sprite_position.y -= 60;

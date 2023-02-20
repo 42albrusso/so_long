@@ -6,13 +6,13 @@
 /*   By: albrusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 12:36:22 by albrusso          #+#    #+#             */
-/*   Updated: 2023/02/15 16:25:04 by albrusso         ###   ########.fr       */
+/*   Updated: 2023/02/20 17:05:32 by albrusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minilibx_linux/mlx.h"
 #include "../libft/libft.h"
-//#include "../get_next_line/get_next_line.h"
+#include "get_next_line.h"
 #include <stdlib.h>
 #ifndef SO_LONG_H
 #define SO_LONG_H
@@ -73,5 +73,7 @@ void	ft_put_wall(void	*mlx, t_window win, t_image wall);
 void	ft_refresh_img(t_program *game);
 
 void	ft_put_wallpaper(t_program *game, t_image wallpaper);
+
+int	ft_check_map(char	*map[]);
 
 #endif
