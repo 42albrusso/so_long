@@ -6,7 +6,7 @@
 /*   By: albrusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:39:28 by albrusso          #+#    #+#             */
-/*   Updated: 2023/02/15 16:25:08 by albrusso         ###   ########.fr       */
+/*   Updated: 2023/02/21 18:25:28 by albrusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void	ft_put_wallpaper(t_program *game, t_image wallpaper)
 	}
 }
 
-void	ft_refresh_img(t_program *game)
+void	ft_refresh_img(t_program *game, const char *s)
 {
 	mlx_destroy_image(game->mlx, game->characters.reference);
-	game->characters = newSprite(game->mlx, "/nfs/homes/albrusso/Desktop/so_long/image/character.xpm");
+	game->characters = newSprite(game->mlx, s);
 	mlx_put_image_to_window(game->mlx, game->win.reference,
 			game->characters.reference, game->sprite_position.x, game->sprite_position.y);
 }

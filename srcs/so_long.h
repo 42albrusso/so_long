@@ -6,7 +6,7 @@
 /*   By: albrusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 12:36:22 by albrusso          #+#    #+#             */
-/*   Updated: 2023/02/20 17:05:32 by albrusso         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:48:02 by albrusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@
 #include <stdlib.h>
 #ifndef SO_LONG_H
 #define SO_LONG_H
-
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
 
 typedef struct	s_vector
 {
@@ -50,11 +45,22 @@ typedef struct	s_image {
 	int			endian;
 }				t_image;
 
+typedef struct s_map
+{
+	int	width;
+	int	height;
+	char	**map;
+}				t_map;
+
+
 typedef struct	s_program {
 	void		*mlx;
 	t_window	win;
 	t_image		characters;
 	t_image		wallpaper;
+	t_image		exit;
+	t_image		wall;
+	t_map		map;
 	t_vector	sprite_position;
 }				t_program;
 
@@ -70,10 +76,16 @@ int	key_hook(int keycode, void *g);
 
 void	ft_put_wall(void	*mlx, t_window win, t_image wall);
 
-void	ft_refresh_img(t_program *game);
+void	ft_refresh_img(t_program *game, const char *s);
 
 void	ft_put_wallpaper(t_program *game, t_image wallpaper);
 
-int	ft_check_map(char	*map[]);
+char	**ft_map(char *av[], t_map *map);
+
+void	ft_view_map(char **map);
+
+void	ft_draw_map(t_program *game, t_image *wall, t_map *map);
+
+char	**ft_refresh_map(int keycode, t_program *game);
 
 #endif

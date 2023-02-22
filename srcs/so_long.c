@@ -6,7 +6,7 @@
 /*   By: albrusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 12:36:04 by albrusso          #+#    #+#             */
-/*   Updated: 2023/02/20 17:05:28 by albrusso         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:45:40 by albrusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,57 +18,18 @@ int	main(int ac, char *argv[])
 {
 
 	t_program	game;
-	t_image	wall;
-	char	**maps;
+	
+	game.map.map = ft_map(argv, &game.map);
 
 	game.mlx = mlx_init();
-	game.win = ft_new_window(game.mlx, 1320, 720, "so_long");
+	game.win = ft_new_window(game.mlx, game.map.width * 60, game.map.height * 60, "so_long");
 
-	game.win.size.x = 1320;
-	game.win.size.y = 720;
-	wall = newSprite(game.mlx, "/nfs/homes/albrusso/Desktop/so_long/image/wall.xpm");
+	game.wall = newSprite(game.mlx, "/nfs/homes/albrusso/Desktop/so_long/image/wall.xpm");
 	game.wallpaper = newSprite(game.mlx, "/nfs/homes/albrusso/Desktop/so_long/image/wallpaper.xpm");
 	game.characters = newSprite(game.mlx, "/nfs/homes/albrusso/Desktop/so_long/image/character.xpm");
-	game.sprite_position.x = 60;
-	game.sprite_position.y = 60;
-
-	if (ft_check_map(maps) == 1)
-	{
-		ft_put_wall(game.mlx, game.win, wall);
-		ft_put_wallpaper(&game, game.wallpaper);
-		mlx_put_image_to_window(game.mlx, game.win.reference, game.characters.reference, 60, 60);
-		mlx_key_hook(game.win.reference, key_hook, &game);
-	}
+	game.exit = newSprite(game.mlx, "/nfs/homes/albrusso/Desktop/so_long/image/exit.xpm");
+	ft_draw_map(&game, &game.wall, &game.map);
+	mlx_key_hook(game.win.reference, key_hook, &game);
 	mlx_loop(game.mlx);
 
 }
-
-
-/*int	main(void)
-{
-	t_program	program;
-	t_image	wall;
-	t_image	sfondo;
-	int	i;
-
-	i = 0;
-	program.mlx = mlx_init();
-	program.window = ft_new_window(program.mlx, 1080, 720, "so_long");
-
-	sfondo = newSprite(program.mlx, "/nfs/homes/albrusso/Desktop/so_long/image/Nuoro-Prato-filato-multidirezionale-3.xpm");
-	mlx_put_image_to_window(program.mlx, program.window.reference,
-			sfondo.reference, 0, 0);
-	program.sprite = newSprite(program.mlx, "/nfs/homes/albrusso/Desktop/so_long/image/left.xpm");
-	wall = newSprite(program.mlx, "/nfs/homes/albrusso/Desktop/so_long/image/wall.xpm");
-	program.sprite_position.x = 0;
-	program.sprite_position.y = 0;
-
-	mlx_key_hook(program.window.reference, key_hook, &program);
-	while (i < 22)
-	{
-		mlx_put_image_to_window(program.mlx, program.window.reference,
-			wall.reference, 60 * i, 0);
-			i++;
-	}
-	mlx_loop(program.mlx);
-}*/
