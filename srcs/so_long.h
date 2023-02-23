@@ -6,7 +6,7 @@
 /*   By: albrusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 12:36:22 by albrusso          #+#    #+#             */
-/*   Updated: 2023/02/22 17:48:02 by albrusso         ###   ########.fr       */
+/*   Updated: 2023/02/23 15:49:58 by albrusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct	s_program {
 	t_image		wallpaper;
 	t_image		exit;
 	t_image		wall;
+	t_image		collect_obj;
 	t_map		map;
 	t_vector	sprite_position;
 }				t_program;
@@ -87,5 +88,7 @@ void	ft_view_map(char **map);
 void	ft_draw_map(t_program *game, t_image *wall, t_map *map);
 
 char	**ft_refresh_map(int keycode, t_program *game);
+
+int	ft_check_map(t_map *map);
 
 #endif

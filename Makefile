@@ -6,14 +6,14 @@
 #    By: albrusso <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 16:14:12 by albrusso          #+#    #+#              #
-#    Updated: 2023/02/22 17:47:08 by albrusso         ###   ########.fr        #
+#    Updated: 2023/02/23 15:38:21 by albrusso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	so_long
 CC			=	clang
 SRCS_DIR	=	srcs/
-SRC		=	so_long.c image.c hooks.c function.c get_next_line.c get_next_line_utils.c read_map.c draw_map.c refresh_map.c
+SRC		=	so_long.c image.c hooks.c function.c get_next_line.c get_next_line_utils.c read_map.c draw_map.c refresh_map.c check_map.c
 
 LIBFT		=	libft/libft.a
 MLXFLAGS	=	-L ./mlx/ -lmlx -framework OpenGL -framework AppKit -lz
